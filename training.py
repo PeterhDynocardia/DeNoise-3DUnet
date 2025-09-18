@@ -16,3 +16,18 @@ history = trainer.fit(
     batch_size=32,
     validation_split=0.1
 )
+
+# Save comparison videos for sanity check
+i = 0
+pulse_true = pulse_videos[i]     # (T, N, 2)
+motion_true = motion_videos[i]
+
+pulse_pred, motion_pred, _, _ = base_model.predict(noisy_videos[i][None, ...])
+pulse_pred = pulse_pred[0]
+motion_pred = motion_pred[0]
+
+os.makedirs("results", exist_ok=True)
+
+# Save side-by-side videos
+save_comparison_video(pulse_true, pulse_pred, "results/pulse_compare.avi", title="Pulse")
+save_comparison_video(motion_true, motion_pred, "results/motion_compare.avi", title="Motion")
