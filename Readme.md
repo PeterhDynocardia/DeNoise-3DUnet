@@ -8,7 +8,7 @@ Outputs:
 
 pulse_pred: denoised physiological signal (pulse-related dynamics)
 
-motion_pred: noise/artifact signal (motion, illumination, jitter)
+motion_pred: noise/artifact signal (motion, jitter)
 
 The model is based on a temporal U-Net encoder–decoder with dual attention masks:
 
